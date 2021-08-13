@@ -25,7 +25,7 @@ final class ModelSkin{
 			}
 		}
 		imagedestroy($image);
-		return new Skin($defaultSkin->getSkinId(), $bytes, "", "geometry.rmsp." . $geometryName, file_get_contents($path . $geometryName . ".json"));
+		return new Skin($defaultSkin->getSkinId(), $bytes, "", "geometry." . $geometryName, file_get_contents($path . $geometryName . ".json"));
 	}
 
 	public static function skinToMap(Skin $skin): array{
@@ -39,6 +39,6 @@ final class ModelSkin{
 	}
 
 	public static function mapToSkin(array $map): Skin{
-		return new Skin(base64_decode($map[0]), base64_encode($map[1]), base64_encode($map[2]), base64_encode($map[3]), base64_encode($map[4]));
+		return new Skin(base64_decode($map[0]), base64_decode($map[1]), base64_decode($map[2]), base64_decode($map[3]), base64_decode($map[4]));
 	}
 }
