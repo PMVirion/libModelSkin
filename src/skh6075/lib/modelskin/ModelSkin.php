@@ -39,6 +39,8 @@ final class ModelSkin{
 	}
 
 	public static function mapToSkin(array $map): Skin{
-		return new Skin(base64_decode($map[0]), base64_decode($map[1]), base64_decode($map[2]), base64_decode($map[3]), base64_decode($map[4]));
+		return new Skin(...array_map(function(string $value) {
+			return base64_decode($value);
+		}, $map));
 	}
 }
